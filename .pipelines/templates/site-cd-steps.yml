@@ -34,17 +34,10 @@ steps:
         echo "subscription_id=`"$subscriptionId`"" > ${{ parameters.siteId }}.auto.tfvars
 
         # Secret name map to tf variable name
-        $secretsToLoad = @{
-          "localAdminUser" = "local_admin_user"
-          "localAdminPassword" = "local_admin_password"
-          "domainAdminUser" = "domain_admin_user"
-          "domainAdminPassword" = "domain_admin_password"
-          "deploymentUserPassword" = "deployment_user_password"
-          "servicePrincipalId" = "service_principal_id"
-          "servicePrincipalSecret" = "service_principal_secret"
-          "rpServicePrincipalObjectId" = "rp_service_principal_object_id"
-          "vmAdminPassword" = "vm_admin_password"
-          "domainJoinPassword" = "domain_join_password"
+        $secretsJson = cat $(System.DefaultWorkingDirectory)/.pipelines/secrets.json | ConvertFrom-Json
+        $secretsToLoad = @{}
+        $secretsJson.psobject.properties | ForEach-Object {
+          $secretsToLoad[$_.Name] = $_.Value
         }
 
         foreach ($secret in $secretsToLoad.GetEnumerator()) {
