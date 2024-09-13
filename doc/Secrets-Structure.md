@@ -40,6 +40,33 @@ Definitions of secret variables can be found in `dev/sample/variables.tf`. Secre
 
 ## How to leverage the shared Key Vault for HCI deployment
 
+The default setting of the QuickStart template will create a key vault for each site. You can leverage the key vault created in the IaC steps for HCI deployment in a shared manner.
+
+Open `modules/base/variables.hci.global.tf`, change the following
+
+```
+    variable "create_key_vault" {
+      type        = bool
+-     default     = true
++     default     = false
+      description = "Set to true to create the key vault, or false to skip it"
+    }
+
+    variable "keyvault_name" {
+      type        = string
+-     default     = ""
++     default     = "<your_keyvault_name>"
+      description = "The name override of the key vault."
+    }
+
+    variable "key_vault_resource_group" {
+      type        = string
+-     default     = ""
++     default     = "<your_keyvault_resource_group>"
+      description = "The resource group of the key vault."
+    }
+```
+
 The following secrets are used in HCI deployment. Do not use the same secret name to avoid conflicts.
 
 - AzureStackLCMUserCredential
