@@ -158,9 +158,12 @@ This scenario provides a quick and efficient way to establish a new site with ed
 
 **Steps**:
 
-* Copy
-* Paste
-* Edit
+1. Create site secrets in the key vault.
+   - `<site>-localAdminUser`: The admin user name of HCI hosts.
+   - `<site>-localAdminPassword`: The admin user password of HCI hosts.
+   - `<site>-deploymentUserPassword`: The password of deployment user which will be created during HCI deployment.
+2. Copy and paste the first site to the new site.
+3. Edit parameters for the new site in `main.tf`
 
 
 ## Enable opt-in features for all sites
