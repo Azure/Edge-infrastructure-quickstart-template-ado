@@ -7,7 +7,19 @@
 
 Create a key vault [here](https://portal.azure.com/#create/Microsoft.KeyVault). This Key Vault will be used to store secrets for deployments.
 
-<!-- TODO: add secret guidance -->
+### Set key vault name in pipeline
+
+Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_key_vault_name>` to the key vault name you just created.
+
+```yml
+  - name: keyVaultName
+    type: string
+    default: <your_key_vault_name> # TODO: Change this to your key vault name
+```
+
+### Learn more on the secrets structure
+
+Check [Secrets Structure](./Secrets-Structure.md) to learn more.
 
 ## Storage account
 

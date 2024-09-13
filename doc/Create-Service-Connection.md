@@ -25,8 +25,18 @@ The following permissions need to be added to the associated service principal:
   - Blob data owner: Persists Terraform state to Azure blob.
   - Key Vault secret officer: Creates secrets in Key Vault.
 
+## Set service connection name in the pipeline
+
+Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_service_connection_name>` to the service connection name you just created.
+
+```yml
+  - name: azureConnectionName
+    type: string
+    default: <your_service_connection_name> # TODO: Change this to your service connection name
+```
+
 ## Next Step
 
-Setup is Done!
+Setup is Done! Search for `TODO` in the repo to ensure you have finished all the steps.
 
 [Go back to home page](../README.md)
