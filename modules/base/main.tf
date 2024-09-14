@@ -115,20 +115,21 @@ module "hci_cluster" {
 
   custom_location_name = local.custom_location_name
   eu_location          = var.eu_location
+  operation_type       = var.operation_type
 
   # Witness settings
-  witness_path                     = var.witness_path
-  witness_type                     = var.witness_type
-  witness_storage_account_id       = var.witness_storage_account_id
-  random_suffix                    = local.random_suffix
-  create_witness_storage_account   = var.create_witness_storage_account
-  witness_storage_account_name     = local.witness_storage_account_name
-  cross_tenant_replication_enabled = var.cross_tenant_replication_enabled
-  account_replication_type         = var.account_replication_type
-  allow_nested_items_to_be_public  = var.allow_nested_items_to_be_public
-  azure_service_endpoint           = var.azure_service_endpoint
-  min_tls_version                  = var.min_tls_version
-  storage_tags                     = var.storage_tags
+  witness_path                                = var.witness_path
+  witness_type                                = var.witness_type
+  random_suffix                               = local.random_suffix
+  create_witness_storage_account              = var.create_witness_storage_account
+  witness_storage_account_name                = var.witness_storage_account_name == "" ? local.witness_storage_account_name : var.witness_storage_account_name
+  witness_storage_account_resource_group_name = var.witness_storage_account_resource_group_name
+  cross_tenant_replication_enabled            = var.cross_tenant_replication_enabled
+  account_replication_type                    = var.account_replication_type
+  allow_nested_items_to_be_public             = var.allow_nested_items_to_be_public
+  azure_service_endpoint                      = var.azure_service_endpoint
+  min_tls_version                             = var.min_tls_version
+  storage_tags                                = var.storage_tags
 
   # Deployment secrets key vault settings
   create_key_vault                             = var.create_key_vault
