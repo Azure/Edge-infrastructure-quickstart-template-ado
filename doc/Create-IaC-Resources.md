@@ -33,12 +33,6 @@ Open `.azure/backendTemplate.tf` in this repository. Replace `<ResourceGroupName
 
 Commit `.azure/backendTemplate.tf` by running `git commit` and the run `git push` to push the changes to the remote branch.
 
-## Lock the resource group
-
-Add a lock for the IaC resource group to prevent deletion.
-
-![lock](./img/lock.png)
-
 ## Next step
 
 [Create service connection and grant roles](./Create-Service-Connection.md)
