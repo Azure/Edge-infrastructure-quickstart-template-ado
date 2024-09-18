@@ -37,6 +37,6 @@ Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_servi
 
 ## Next Step
 
-Setup is Done! Search for `TODO` in the repo to ensure you have finished all the steps.
+Search for `TODO` in the repo to ensure you have finished all the prerequisites.
 
-[Go back to home page](../README.md)
+[Create Pipeline](./Create-Pipeline.md)

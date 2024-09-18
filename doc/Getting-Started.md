@@ -28,6 +28,7 @@ With this hardware setup, system admins can provision HCI clusters at scale by A
 3. [Add Terraform AzDO extension](./Add-Terraform-Extension.md)
 4. [Create IaC resources](./Create-IaC-Resources.md)
 5. [Create service connection and grant roles](./Create-Service-Connection.md)
+6. [Create pipeline](./Create-Pipeline.md)
 
 ## Next Step
 
