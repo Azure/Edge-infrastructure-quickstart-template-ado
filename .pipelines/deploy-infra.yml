@@ -1,6 +1,9 @@
 name: $(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd).$(DayOfYear)$(Rev:r)
 
-trigger: none
+trigger:
+  branches:
+    include:
+    - main
 
 pool: <your_pool_name> # TODO: Change this to your pool name
 
