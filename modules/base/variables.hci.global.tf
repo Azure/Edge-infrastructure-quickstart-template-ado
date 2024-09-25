@@ -33,12 +33,18 @@ variable "storage_networks" {
     name               = string
     networkAdapterName = string
     vlanId             = string
-    storageAdapterIPInfo = optional(object({
-      physicalNode = string
-      ipv4Address  = string
-      subnetMask   = string
-    }))
   }))
+  description = "A list of storage networks."
+}
+
+variable "storage_adapter_ip_info" {
+  type = map(list(object({
+    physicalNode = string
+    ipv4Address  = string
+    subnetMask   = string
+  })))
+  default     = null
+  description = "The IP information for the storage networks. Key is the storage network name."
 }
 
 variable "rdma_enabled" {
@@ -123,6 +129,12 @@ variable "keyvault_name" {
   type        = string
   default     = ""
   description = "The name override of the key vault."
+}
+
+variable "use_legacy_key_vault_model" {
+  type        = bool
+  default     = false
+  description = "Indicates whether to use the legacy key vault model."
 }
 
 variable "create_key_vault" {
@@ -318,4 +330,70 @@ variable "operation_type" {
     condition     = contains(["ClusterProvisioning", "ClusterUpgrade"], var.operation_type)
     error_message = "operation_type must be either 'ClusterProvisioning' or 'ClusterUpgrade'."
   }
+}
+
+variable "configuration_mode" {
+  type        = string
+  default     = "Express"
+  description = "The configuration mode for the storage."
+}
+
+variable "hvci_protection" {
+  type        = bool
+  default     = true
+  description = "By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster."
+}
+
+variable "drtm_protection" {
+  type        = bool
+  default     = true
+  description = "By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent."
+}
+
+variable "drift_control_enforced" {
+  type        = bool
+  default     = true
+  description = "When set to true, the security baseline is re-applied regularly."
+}
+
+variable "credential_guard_enforced" {
+  type        = bool
+  default     = false
+  description = "When set to true, Credential Guard is enabled on your Azure HCI cluster."
+}
+
+variable "side_channel_mitigation_enforced" {
+  type        = bool
+  default     = true
+  description = "When set to true, all the side channel mitigations are enabled."
+}
+
+variable "smb_cluster_encryption" {
+  type        = bool
+  default     = false
+  description = "When set to true, cluster east-west traffic is encrypted."
+}
+
+variable "smb_signing_enforced" {
+  type        = bool
+  default     = true
+  description = "When set to true, the SMB default instance requires sign in for the client and server services."
+}
+
+variable "bitlocker_boot_volume" {
+  type        = bool
+  default     = true
+  description = "When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent."
+}
+
+variable "bitlocker_data_volumes" {
+  type        = bool
+  default     = true
+  description = "When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes."
+}
+
+variable "wdac_enforced" {
+  type        = bool
+  default     = true
+  description = "WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster."
 }
