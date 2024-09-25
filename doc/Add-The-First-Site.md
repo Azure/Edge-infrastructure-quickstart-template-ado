@@ -38,7 +38,7 @@
 
 ## Next Step
 
-If you want to scale more site, you can [Scale with the automations](./doc/Scale-with-automation.md) or [Go back to home page](../README.md)
+[Go back to home page](../README.md)
 
 Learn more:
 
