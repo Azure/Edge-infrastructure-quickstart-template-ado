@@ -19,6 +19,7 @@ module "edge_site" {
   source  = "Azure/avm-res-edge-site/azurerm"
   version = "~>0.1"
 
+  count            = var.country != "" ? 1 : 0
   enable_telemetry = var.enable_telemetry
 
   location              = azurerm_resource_group.rg.location
