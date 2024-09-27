@@ -1,6 +1,6 @@
 # Sharing HCI dependencies
 
-The default setting of the QuickStart template will create a key vault and a witness storage account for each site. You can leverage the key vault created in the IaC steps for HCI deployment in a shared manner. Creating another storage account for witness is recommended to avoid accidentally overwriting of Terraform states.
+The default setting of the QuickStart template will create a key vault and a witness storage account for each site. You may leverage the key vault created in the IaC steps for HCI deployment in a shared manner. Creating another storage account for witness is recommended to avoid accidentally overwriting of Terraform states.
 
 ## How to configure the shared Key Vault for HCI deployment
 
