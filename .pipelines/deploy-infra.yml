@@ -7,6 +7,8 @@ trigger:
 
 pool: <your_pool_name> # TODO: Change this to your pool name
 
+lockBehavior: sequential
+
 stages:
   - stage: dev
     jobs:
