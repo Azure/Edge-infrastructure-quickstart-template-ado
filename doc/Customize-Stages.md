@@ -1,51 +1,6 @@
 # Customize Stages
 
-Open `.pipelines/deploy-infra.yml`. The initial version is
-
-```yml
-stages:
-  - stage: dev
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: dev
-  - stage: qa
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: qa
-  - stage: prod
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: prod
-```
-
-You can add, remove or rearrange the sequence following the sample. For instance, to add a canary stage, create `canary` folder first, add a `.gitignore` file in the folder and edit `.pipelines/deploy-infra.yml` to the following.
-
-```yml
-stages:
-  - stage: dev
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: dev
-  - stage: qa
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: qa
-  - stage: canary
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: canary
-  - stage: prod
-    jobs:
-    - template: templates/list-and-run.yml
-      parameters:
-        directory: prod
-```
+You may create new folders to represent a stage. Put new sites under the folder. Then, open `.stages` file to add the stage into your deployment workflow. Commit the changes, the deployment pipeline will change accordingly.
 
 ## Next Step
 
@@ -53,6 +8,8 @@ stages:
 
 Learn more:
 
-- About [adding your first site with static templates](./Add-The-First-Site.md)
+- About [adding your first site with static templates](./Add-first-Site.md)
+- About [your CI/CD pipeline running status](./View-pipeline.md)
 - About [troubleshooting](./TroubleShooting.md)
-- About [enabling arc extensions for all sites](../README.md#enable-opt-in-features-for-all-sites)
+- About [adding new sites with the customized templates](../README.md#scenario-2-convert-your-poc-site-settings-into-iac-code-then-scale-private-preview)
+- About [enabling arc extensions for all sites](../README.md#enable-arc-extensions-for-all-sites)

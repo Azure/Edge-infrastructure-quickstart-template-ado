@@ -7,7 +7,7 @@ Variables are grouped by products. For example, HCI related variables are define
 For global configurations which applies to all the sites, you can add default values in `modules/base/variables.<product>.global.tf`. For example, if you want to set the global parameter of your AD FQDN, you can go to `modules/base/variables.hci.global.tf` and add a default attribute. (Do not add the starting `+`.)
 
 ```hcl
-  variable "domain_fqdn" {
+  variable "domainFqdn" {
     description = "The domain FQDN."
     type        = string
 +   default     = "stores.contoso.com"
@@ -21,11 +21,3 @@ Site level variables are defined in `modules/base/variables.<product>.site.tf`. 
 # Pass through variables and reference variables
 
 You don't need to care about these variables in most cases. They are defined in `<product>.misc.tf`. Pass through variables are used to make Terraform modules work. Reference variables are used by this product, but its definition is put in another product. You can find its definition there.
-
-## Next Step
-
-[Go back to home page](../README.md)
-
-Learn more:
-
-- About [troubleshooting](./TroubleShooting.md)

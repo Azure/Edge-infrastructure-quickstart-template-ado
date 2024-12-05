@@ -384,6 +384,11 @@ variable "operation_type" {
     condition     = contains(["ClusterProvisioning", "ClusterUpgrade"], var.operation_type)
     error_message = "operation_type must be either 'ClusterProvisioning' or 'ClusterUpgrade'."
   }
+
+  validation {
+    condition     = !var.enable_provisioners || var.operation_type != "ClusterUpgrade"
+    error_message = "When operation_type is 'ClusterUpgrade', enable_provisioner must be false."
+  }
 }
 
 variable "configuration_mode" {

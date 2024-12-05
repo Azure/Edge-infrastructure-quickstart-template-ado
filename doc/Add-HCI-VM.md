@@ -31,12 +31,3 @@ The VM name should be 1-15 characters which contains only alphanumeric character
 1. Go to `modules/base/variables.hci-vm.global.tf`. Input `domainToJoin` and `domainTargetOu` of your organization.
 2. Change the `domainJoinUsername` in `modules/base/naming.tf`.
 3. Add `domainJoinPassword` to the repo secrets.
-
-## Next Step
-
-[Go back to home page](../README.md)
-
-Learn more:
-
-- About [troubleshooting](./TroubleShooting.md)
-
