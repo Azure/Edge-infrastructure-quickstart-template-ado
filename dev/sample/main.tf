@@ -67,4 +67,9 @@
 #   # Uncomment this section will create site manager instance for the resource group.
 #   # Check ./doc/Add-Site-Manager.md for more information
 #   # country = "<country>"
+
+#   # Region upgrade from 22H2 to 23H2
+#   # Uncomment this section will upgrade the cluster from 22H2 to 23H2
+#   # operation_type                = "ClusterUpgrade"
+#   # configuration_mode            = "InfraOnly"
 # }
