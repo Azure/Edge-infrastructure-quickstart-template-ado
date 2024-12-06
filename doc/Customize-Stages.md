@@ -47,6 +47,9 @@ stages:
         directory: prod
 ```
 
+## Other pipelines with stages
+* **Drift Detection Pipeline**: The stages in `.pipelines/drift.yml` could be customized in a similar way.
+
 ## Next Step
 
 [Go back to home page](../README.md)

@@ -9,12 +9,11 @@ Create a key vault [here](https://portal.azure.com/#create/Microsoft.KeyVault). 
 
 ### Set key vault name in pipeline
 
-Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_key_vault_name>` to the key vault name you just created.
+Open `.pipelines/config-variables.yml`, change the following `<your_key_vault_name>` to the key vault name you just created.
 
 ```yml
   - name: keyVaultName
-    type: string
-    default: <your_key_vault_name> # TODO: Change this to your key vault name
+    value: <your_key_vault_name> # TODO: Change this to your key vault name
 ```
 
 ### Learn more on the secrets structure

@@ -53,7 +53,7 @@ You could refer to [Manage terraform resource drift](https://developer.hashicorp
 <details>
 <summary> Will I receive notifications for the manual approval task? </summary>
 
-You need to set `notifyUsers` in `config-variables.yml`, this could be either an email address or a group using the `[org name]\group` name syntax. Please follow the instruction [here](https://learn.microsoft.com/en-us/azure/devops/organizations/security/add-remove-manage-user-group-security-group?view=azure-devops&tabs=preview-page#create-a-custom-security-group) for group creation.
+You need to set `notifyUsers` in `config-variables.yml`, please refer to [Config Variables](./Config-Variables.md) for more details.
 
 </details>
 
@@ -66,7 +66,7 @@ You could set the parameter  `disableDriftDetection` in `.pipeline/deploy-infra.
 
 ## Drift Detection in `.pipeline/drift.yml`
 
-The `.pipeline/drift.yml` pipeline checks for drift. To create this pipeline, follow the instructions in [Create Deployment Pipeline.md](./Create-Pipeline.md) and select `.pipeline/drift.yml` when prompted for the pipeline YAML file.
+The `.pipeline/drift.yml` pipeline checks for drift. To create this pipeline, follow the instructions in [Create Deployment Pipeline](./Create-Pipeline.md) and select `.pipeline/drift.yml` when prompted for the pipeline YAML file.
 
 You can trigger the pipeline manually or schedule it to run periodically by uncommenting the following lines in `.pipeline/drift.yml`:
 ```yaml
@@ -86,3 +86,7 @@ The pipeline will scan all the stages  for drift and provide a summary for revie
 If drift is detected, in either `.pipelines/deploy-infra.yml` or `.pipeline/drift.yml`, the following summary will be provided in your build for review. It is under the `Extensions` tab. Also the  `drift-detected-{stage}` tag will be marked as the tag of the build if drift is detected for `{stage}`. An exmpale of the drift summary is shown below:
 
 ![drift-summary](./img/driftSummary.png)
+
+## Next Step
+
+[Go back to home page](../README.md)
