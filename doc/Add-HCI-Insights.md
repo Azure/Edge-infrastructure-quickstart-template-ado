@@ -1,10 +1,12 @@
 # Add HCI Insights
 
-Go to `modules/base/variables.hci-extensions.tf`. Change default value of `enableInsights` from `false` to `true.`
+Go to `modules/base/variables.hci-extensions.global.tf`. Change default value of `enable_insights` from `false` to `true.`
 
-![Enable insights](img/EnableInsights.png)
+Do the same to enable alerts by toggling the default value of `enable_alerts` for HCI.
 
-Do the same to enable alerts by toggling the default value of `enableAlerts` for HCI.
+## Use existing data collection rule and log analytics workspace
+
+Go to `modules/base/variables.hci-extensions.global.tf`. Change the default value of `data_collection_rule_resource_id` from `""` to `"<your_existing_data_collection_rule_azure_resource_id>"`.
 
 ## Next Step
 
@@ -12,7 +14,4 @@ Do the same to enable alerts by toggling the default value of `enableAlerts` for
 
 Learn more:
 
-- About [your CI/CD pipeline running status](./View-pipeline.md)
 - About [troubleshooting](./TroubleShooting.md)
-- About [enabling arc extensions for all sites](../README.md#enable-arc-extensions-for-all-sites)
-- About [adding new stage](./Customize-Stages.md)
