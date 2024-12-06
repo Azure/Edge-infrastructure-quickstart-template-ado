@@ -165,6 +165,38 @@ This scenario provides a quick and efficient way to establish a new site with ed
 2. Copy and paste the first site to the new site.
 3. Edit parameters for the new site in `main.tf`
 
+## Scenario 2: Import your 22H2 cluster into IaC code, then upgrade to 23H2
+
+**Overview**: If you already have a 22H2 cluster modeled within a resource group. This scenari will codify the existing resources and translate them into Terraform modules, then upgrade the cluster to 23H2.
+
+**Steps**:
+
+* Prepare nodes, and validate solution upgrade [readiness](https://learn.microsoft.com/en-us/azure/azure-local/upgrade/about-upgrades-23h2)
+    * Sometimes, it may be necessary to [remediate obsolete LCM packages](https://aka.ms/RemediateLCMPreviousZip)
+* Create a branch, and modify main.tf, where `"ClusterUpgrade"` should be specified for `operation_type`.
+    * `"InfraOnly"` is currently the only supported `configuration_mode`
+    * `enable_provisioners` is currently not supported for `"ClusterUpgrade"`; verify the following roles have already been assigned to the nodes (Machine - Azure Arc)
+        - KVSU   = "Key Vault Secrets User"
+        - ACMRM  = "Azure Connected Machine Resource Manager"
+        - ASHDMR = "Azure Stack HCI Device Management Role"
+        - Reader = "Reader"
+```
+    operation_type = "ClusterUpgrade"
+    configuration_mode = "InfraOnly"
+    enable_provisioners = false
+```
+* Uncomment imports.tf
+    * If the naming convention does not suit your needs, modify `naming.tf` under `modules/base`
+
+> [!IMPORTANT]
+> If the naming is incorrect, the resources imported will be destroyed and replaced by Terraform. Please double confirm the naming.
+
+* Appply the changes using automation in the same way.
+
+**Expected outcome**:
+
+* The cluster is upgraded to 23H2.
+* Arc bridge and Custom location are available in the resource group.
 
 ## Enable opt-in features for all sites
 
