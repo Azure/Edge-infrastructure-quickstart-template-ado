@@ -70,9 +70,9 @@ By using this template, you can get all of the followings inside a single PR und
 
     | Variable Type           | Description                                                                                                     | Example             | Where to set value                                                                                       | Override Priority |
     | ----------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------- | :---------------: |
-    | Global Variables        | The values of the global variables typically are consistent across the whole fleet but specific for one product | `domainFqdn` in HCI | Set in `modules/base/<product>.hci.global.tf`. Add default value for variables.                          |        low        |
-    | Site specific variables | The values of these variables are unique in each site                                                           | `siteId`            | These variables must be set in the site `main.tf` file under each site folder                            |       high        |
-    | Pass through variables  | The values of these variables are inherited from GitHub secrets                                                 | `subscriptionId`    | `modules/base/<product>.hci.misc.tf`                                                                     |                   |
+    | Global Variables        | The values of the global variables typically are consistent across the whole fleet but specific for one product | `domain_fqdn` in HCI | Set in `modules/base/<product>.global.tf`. Add default value for variables.                          |        low        |
+    | Site specific variables | The values of these variables are unique in each site                                                           | `starting_address`            | These variables must be set in the site `main.tf` file under each site folder                            |       high        |
+    | Pass through variables  | The values of these variables are inherited from GitHub secrets                                                 | `subscription_id`    | `modules/base/<product>.misc.tf`                                                                     |                   |
     | Reference variables     | These variables are shared by 2 or more products                                                                | `location`          | Its definition can be found in `variables.<product>.*.tf` if its link is `ref/<product>/<variable_name>` |                   |
 
     </details>
@@ -107,23 +107,14 @@ By using this template, you can get all of the followings inside a single PR und
 flowchart LR;
     A[Fork QuickStart Repo] --> B["`Finish setup 
     in Getting-Started`"];
-    B --> C{Have a POC site?};
-    C -- Yes --> D([Export your site to code]);
-    D --> E([Check export results]);
-    C -- No --> F[Uncomment sample code];
+    B --> F[Uncomment sample code];
     F --> G["`Input values 
     for your first site`"];
-    E --> H[Merge pull request];
-    H --> I(["`Scale more sites
-    by exported module`"]);
     G --> J["`Move shared 
     paramteres to global`"];
     J --> K(["`Scale more sites
     by sample module`"]);
-    I --> L[Get scaled sites];
-    K --> L;
-    Z(["`Private Preview
-    *(sign up required)*`"])
+    K --> L[Get scaled sites];
 ```
 
 ### Supported Azure edge resource types
@@ -153,7 +144,7 @@ This repository implements AD preparation and Arc connection. Follow the instruc
 **Overview**: Ready to deploy your first with AKS Arc on HCI23H2 along with Arc extensions? It's the right place for you.
 This scenario provides a quick and efficient way to establish a new site with edge resources with a predefined infrastructure template.
 
-**Steps**: [Create your first site](./doc/Add-first-Site.md)
+**Steps**: [Create your first site](./doc/Add-The-First-Site.md)
 
 **Expected outcome**:
 
@@ -161,102 +152,21 @@ This scenario provides a quick and efficient way to establish a new site with ed
 * A PR containing a pre-defined CI/CD pipeline with the 3 stages: Dev, QA, Prod
 * Provisioning action will happen in your side (*merge the PR to `main`*)
 
-### Scale more sites (Private Preview)
+### Scale more sites
 
-**Overview**: Automatically configure scaling settings based on the parameters defined in the previous steps.
-
-**Steps**:
-
-* This feature is currently in **Private Preview**. Before you begin: [Sign up Private Preview](./doc/sign-up-Private-Preview.md)
-* Confirm and update the global configurations: If you would like to update the pre-filled values of the global configurations, follow the guidance [Edit-Global-Parameters](./doc/Edit-Global-Parameters.md) to make the change.
-* Get the scaling code based on the quick-start template:
-    1. Create a new branch from `main` by running `git checkout -b <yourFeatureBranch>`
-    2. Run `./az-edge-site-scale generate -c ./.azure/scale.csv -s ./dev/<yourSiteName>` to get the scaling csv file. You can find a spread sheet under `./.azure`. The spread sheet contains all the entries which need customized inputs from you per site.
-* [Scale with the automations](./doc/Scale-with-automation.md)
-
-**Expected outcome**:
-
-* A PR with the Terraform code for # of sites, each containing 1 HCI cluster, 1 AKS Arc cluster and the optional monitoring extension and Arc site manager extension.
-* A PR containing a pre-defined CI/CD pipeline with the 3 stages: Dev, QA, Prod
-* Provisioning action will happen in your side (*merge the PR to `main`*)
-
-## Scenario 2: Convert your PoC site settings into IaC code, then scale (Private Preview)
-
-**Overview**: If you already have a PoC Site modeled within a resource group. This scenario will codify the existing resources and translate them into Terraform modules, then using automations to replicate the custom templates for multiple sites.
+**Overview**: Configure scaling settings based on the parameters defined in the previous steps.
 
 **Steps**:
 
-* This feature is currently in **Private Preview**. Before you begin: [Sign up Private Preview](./doc/sign-up-Private-Preview.md)
- > [!IMPORTANT]
- > Resources under the resource group must belong to one single site. Code generation **doesn't** support resource groups containing multiple HCI clusters for now.
-* Convert the PoC site into IaC code:
+1. Create site secrets in the key vault.
+   - `<site>-localAdminUser`: The admin user name of HCI hosts.
+   - `<site>-localAdminPassword`: The admin user password of HCI hosts.
+   - `<site>-deploymentUserPassword`: The password of deployment user which will be created during HCI deployment.
+2. Copy and paste the first site to the new site.
+3. Edit parameters for the new site in `main.tf`
 
-    1. Create a branch from `main` branch by running `git checkout -b <yourFeatureBranch>`
-    2. Add a new file `.azure/export.json`. Do not use `base` as the name of the module. It may carry the original contents in your exported module.
 
-    ```json
-    [
-        {
-            "resourceGroup": "/subscriptions/<your-subscription-id>/resourceGroups/<yourSampleResourceGroup>",
-            "baseModulePath": "./modules/<name-of-the-module>",
-            "groupPath": "./dev/<yourSiteName>"
-        }
-    ]
-    ```
-
-    3. Commit and push `.azure/export.json`: `git commit -m <commit message>` and `git push -u origin <yourFeatureBranch>`. A GitHub workflow will be triggered automatically. Create a pull request to `main`.You can find your workflow run as following.
-    
-    <img src="./doc/img/view_export_workflow_in_action_panel.png" width="800" />
-    
-    4. After workflow execution, check the generated code.
-    
-    <img src="./doc/img/view_commit_for_export.png" width="600" />
-
-    * If the workflow runs successfully, the generated code is identical to Azure resources. Please merge the branch ASAP. If there are changes happened after export, the changes will be reverted.
-    * If the workflow run fails, you can check `./dev/<yourSiteName>/export-diff` to see what are the changes.
-
-* [Scale with automations](./doc/Scale-with-automation.md)
-
-**Expected outcome**:
-
-* A GitHub repository with Terraform code for # of sites, each containing custom settings for HCI clusters, AKS Arc clusters
-* A pre-defined CI/CD pipeline containing 3 stages: Dev, QA, Prod
-* Provisioning action will happen in your side (*merge the PR to `main`*)
-
-## Scenario 3: Import your 22H2 cluster into IaC code, then upgrade to 23H2
-
-**Overview**: If you already have a 22H2 cluster modeled within a resource group. This scenari will codify the existing resources and translate them into Terraform modules, then upgrade the cluster to 23H2.
-
-**Steps**:
-
-* Prepare nodes, and validate solution upgrade [readiness](https://learn.microsoft.com/en-us/azure/azure-local/upgrade/about-upgrades-23h2)
-    * Sometimes, it may be necessary to [remediate obsolete LCM packages](https://aka.ms/RemediateLCMPreviousZip)
-* Create a branch, and modify main.tf, where `"ClusterUpgrade"` should be specified for `operation_type`.
-    * `"InfraOnly"` is currently the only supported `configuration_mode`
-    * `enable_provisioners` is currently not supported for `"ClusterUpgrade"`; verify the following roles have already been assigned to the nodes (Machine - Azure Arc)
-        - KVSU   = "Key Vault Secrets User"
-        - ACMRM  = "Azure Connected Machine Resource Manager"
-        - ASHDMR = "Azure Stack HCI Device Management Role"
-        - Reader = "Reader"
-```
-    operation_type = "ClusterUpgrade"
-    configuration_mode = "InfraOnly"
-    enable_provisioners = false
-```
-* Uncomment imports.tf
-    * If the naming convention does not suit your needs, modify `naming.tf` under `modules/base`
-
-> [!IMPORTANT]
-> If the naming is incorrect, the resources imported will be destroyed and replaced by Terraform. Please double confirm the naming.
-
-* Appply the changes using automation in the same way.
-
-**Expected outcome**:
-
-* The cluster is upgraded to 23H2.
-* Arc bridge and Custom location are available in the resource group.
-
-## Enable Arc extensions for all sites
+## Enable opt-in features for all sites
 
 Any change merged into `main` branch will trigger the update pipeline. If the change fails in early stages, the deployment will be blocked so that this failure will not affect the production sites.
 
@@ -279,10 +189,10 @@ Following tutorials help you to turn on opt-in features:
 
 [Open issue](https://github.com/Azure/Edge-infrastructure-quickstart-template/issues/new) or contact arcIaCSupport@microsoft.com for any issue or support
 
-## License  
-  
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.  
-  
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information. This repository includes a script that will download binary files into your environment, which remain subject to your relevant customer agreement with Microsoft.
+
 ## Disclaimer  
 
 'Preview Terms'. This repository (the "Preview") is subject to the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/). Unless otherwise noted, Customer should not use the Preview to process Personal Data or other Data that is subject to legal or regulatory compliance requirements.
