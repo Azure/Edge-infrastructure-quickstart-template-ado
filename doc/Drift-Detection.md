@@ -1,7 +1,12 @@
 # Drift Detection
-If user makes changes to the infrastructure outside of terraform, it will cause drift in the infrastructure. It usually happens when user manually changes the configuration in Azure portal for testing or walkaround. To help user identify drift in the infrasturcture, the following pipelines are integrated with drift detection:
-* `.pipelines/deploy-infra.yml`: this is the pipeline you will run to apply the infrastructure from config. Before running `terraform apply` to all sites in the stage, it will first run drift detection. If any site is detected with drift, the pipeline will require for user's confirmation to proceed and provide a summary for review.
-* `.pipeline/drift.yml`: this is a dedicated pipeline to detect drift in the infrastructure. It will scan your environment for any configuration drift or changes made outside of terraform. If any drift is detected, the corresponding job will be marked as failed and the drift summary will be provided for review.
+Terraform drift refers to the situation where the actual state of infrastructure in an environment diverges from the state defined in Terraform configuration files. If user makes changes to the infrastructure outside of terraform, it will cause drift in the infrastructure. It usually happens when user manually changes the configuration in Azure portal for testing or walkaround. There are two types of drift taken into consideration:
+
+* **Configuration Drift**: the configuration file defined in your repo is drifted from the actual state of the infrastructure.
+* **State Drift**: the [terraform state](https://developer.hashicorp.com/terraform/language/state) is drifted from the actual state of the infrastructure. 
+
+To help user identify drift in the infrasturcture, the following pipelines are integrated with drift detection:
+* `.pipelines/deploy-infra.yml` (check only for **state drift**): this is the pipeline you will run to apply the infrastructure from config. Before running `terraform apply` to all sites in the stage, it will first run drift detection for **state drift**. If any site is detected with drift, the pipeline will require for user's confirmation to proceed and provide a summary for review.
+* `.pipeline/drift.yml` (check for both **configuration drift** and **state drift**): this is a dedicated pipeline to detect drift in the infrastructure. It will scan your environment for both drifts. If any drift is detected, the corresponding job will be marked as failed and the drift summary will be provided for review.
 
 ## Drift Detection in `.pipelines/deploy-infra.yml`
 For each stage, the drift detection job is added before the `terraform apply` job.
