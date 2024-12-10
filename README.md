@@ -167,7 +167,7 @@ This scenario provides a quick and efficient way to establish a new site with ed
 
 ## Scenario 2: Import your 22H2 cluster into IaC code, then upgrade to 23H2
 
-**Overview**: If you already have a 22H2 cluster modeled within a resource group. This scenari will codify the existing resources and translate them into Terraform modules, then upgrade the cluster to 23H2.
+**Overview**: If you already have a 22H2 cluster modeled within a resource group, this scenario will import them into Terraform modules, then upgrade the cluster to 23H2.
 
 **Steps**:
 
