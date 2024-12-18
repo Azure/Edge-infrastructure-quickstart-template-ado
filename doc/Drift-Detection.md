@@ -1,8 +1,8 @@
 # Drift Detection
 Terraform drift refers to the situation where the actual state of infrastructure in an environment diverges from the state defined in Terraform configuration files. If user makes changes to the infrastructure outside of terraform, it will cause drift in the infrastructure. It usually happens when user manually changes the configuration in Azure portal for testing or walkaround. There are two types of drift taken into consideration:
 
-* **Configuration Drift**: the configuration file defined in your repo is drifted from the actual state of the infrastructure.
-* **State Drift**: the [terraform state](https://developer.hashicorp.com/terraform/language/state) is drifted from the actual state of the infrastructure. 
+* **Configuration Drift**: the actual state of the infrastructure is drifted from the terraform configuration file defined in the repo.
+* **State Drift**: the actual state of the infrastructure is different from the [terraform state](https://developer.hashicorp.com/terraform/language/state). 
 
 To identify drift in the infrastructure, the following pipelines are integrated with drift detection:
 
@@ -54,8 +54,6 @@ You could refer to [Manage terraform resource drift](https://developer.hashicorp
 
 </details>
 
-</details>
-
 <details>
 <summary> Will I receive notifications for the manual approval task? </summary>
 
@@ -92,7 +90,7 @@ The pipeline will scan all the stages  for drift and provide a summary for revie
 <details>
 <summary> Can I configure the behavior for the type of drift to detect? </summary>
 
-By default, drift detection in `.pipelines/drift.yml` shows both *state drift* and *configuration drift* in drift summary, but it reports drift only if *state drift* is found. You can configure this behavior with two parameters:
+By default, drift detection in `.pipelines/drift.yml` shows both *state drift* and *configuration drift* in drift summary, but it reports drift only if *state drift* is detected. You can configure this behavior with two parameters:
 * `driftReportType`: Specifies the type of drift detection result to show in drift summary. Valid values are `State`, `Configuration`, or `All`. (default: `All`)
 * `markDriftType`: Specifies when to mark a stage as drifted, effective only when `driftReportType` is `All`. Valid values are `State`, `Configuration`, or `All`. (default: `State`)
 
