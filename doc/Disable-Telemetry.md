@@ -1,11 +1,11 @@
 # Disable Telemetry
 
-Microsoft collects deployment pipeline telemetry. If you do not want to send telemetry, edit `.pipelines/templates/site-cd-steps.yml`, remove all steps starts with `Telemetry`.
+Microsoft collects deployment pipeline telemetry. If you do not want to send telemetry, edit `.pipelines/templates/site-cd-steps.yml`, remove all steps starting with `Telemetry`.
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
+## Learn more
 
-- About [troubleshooting](./TroubleShooting.md)
+[Troubleshooting](./TroubleShooting.md)
