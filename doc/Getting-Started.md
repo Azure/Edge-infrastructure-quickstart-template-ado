@@ -30,13 +30,16 @@ With this hardware setup, system admins can provision HCI clusters at scale by A
 5. [Create service connection and grant roles](./Create-Service-Connection.md)
 6. [Create pipeline](./Create-Pipeline.md)
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
+## Learn more
 
-- About [adding your first site with static templates](./Add-The-First-Site.md)
-- About [your CI/CD pipeline running status](./View-pipeline.md)
-- About [troubleshooting](./TroubleShooting.md)
-- About [enabling arc extensions for all sites](../README.md#enable-opt-in-features-for-all-sites)
+[Adding your first site with static templates](./Add-The-First-Site.md)
+
+[Your CI/CD pipeline running status](./View-pipeline.md)
+
+[Troubleshooting](./TroubleShooting.md)
+
+[Enabling arc extensions for all sites](../README.md#enable-opt-in-features-for-all-sites)
