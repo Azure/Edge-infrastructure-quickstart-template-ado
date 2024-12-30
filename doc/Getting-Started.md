@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-Before you get started, here are the steps you need to perform for prerequisites:
+Before you begin, make sure to complete the following prerequisite steps:
 
 - Check deployment checklist and install AzureStack HCI OS on your servers to be deployed as AzureStack HCI clusters
-- Complete the step 2 (Download the software) & 3 (Install the OS) in this [doc](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software).
+- Complete Step 2 (Download the software) & 3 (Install the OS) in this [document](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software).
 - **Make sure `Remote management` section is `Enabled`.**
 ![Remote management](./img/remoteManagement.png)
 
@@ -15,9 +15,8 @@ Before you get started, here are the steps you need to perform for prerequisites
 
 The QuickStart solution uses remote PowerShell to complete the Active Directory preparation and Arc registration. The following picture shows an overview of a basic hardware setup.
 
-In dev center, there are Windows servers act as AzDO agents and Active Directory Domain Controllers. On edge, servers are installed with HCI OS. All the servers are connected to the Corp net. Servers on edge allows remote management inside the Corp net. No inbound is allowed from the Internet.
-
-With this hardware setup, system admins can provision HCI clusters at scale by AzDO pipelines.
+In the development center, Windows servers function as Azure DevOps (AzDO) agents and Active Directory Domain Controllers. On the edge, servers are equipped with HCI OS. All servers are connected to the corporate network. Edge servers enable remote management within the corporate network, with no inbound connections allowed from the Internet.
+This hardware setup allows system admins to provision HCI clusters at scale by AzDO pipelines.
 
 ![topology](./img/topology.png)
 
