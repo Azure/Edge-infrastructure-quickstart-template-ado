@@ -53,6 +53,14 @@
 #   lnet_default_gateway  = "<lnetDefaultGateway>" # Default gateway can be same as HCI infra default gateway.
 #   lnet_dns_servers      = ["<lnetDnsServer1>"]   # DNS servers can be same as HCI infra DNS servers.
 
+#   # Region HCI storage paths
+#   hci_storagepath = [
+#     {
+#       name = "UserStorage-1"
+#       path = "C:\\ClusterStorage\\UserStorage_1"
+#     }
+#   ]
+
 #   # Region AKS Arc parameters
 #   aks_arc_control_plane_ip    = "<aksArcControlPlanIp>"      # An IP address in the logical network IP range.
 #   rbac_admin_group_object_ids = ["<rbacAdminGroupObjectId>"] # An AAD group that will have the admin permission of this AKS Arc cluster. Check ./doc/AKS-Arc-Admin-Groups.md for details
