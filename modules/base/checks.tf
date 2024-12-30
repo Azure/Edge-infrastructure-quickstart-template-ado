@@ -1,6 +1,6 @@
 locals {
   is_windows = length(regexall("^[a-z]:", lower(abspath(path.root)))) > 0
-  program = local.is_windows ? "powershell.exe" : "pwsh"
+  program    = local.is_windows ? "powershell.exe" : "pwsh"
 }
 
 data "external" "lnet_ip_check" {

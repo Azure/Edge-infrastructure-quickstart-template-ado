@@ -253,8 +253,8 @@ resource "azapi_resource" "hci_storagepath" {
   type       = "Microsoft.AzureStackHCI/storageContainers@2024-01-01"
   parent_id  = module.hci_cluster.arc_settings.id
   depends_on = [module.hci_cluster]
- 
-  name = each.key
+
+  name     = each.key
   location = var.location
   body = jsonencode({
     extendedLocation = {
@@ -274,7 +274,6 @@ module "aks_arc" {
   depends_on       = [module.hci_cluster, module.hci_logicalnetwork, azapi_resource.hci_storagepath]
   count            = (var.configuration_mode != "InfraOnly" || length(local.hci_storagepath_map) > 0) ? 1 : 0
   enable_telemetry = var.enable_telemetry
-
 
   location                    = azurerm_resource_group.rg.location
   name                        = local.aks_arc_name
