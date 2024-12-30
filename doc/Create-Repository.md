@@ -1,7 +1,7 @@
-# Create a repository based on this template
+# Create a repository using template
 
 > [!NOTE]
-> This step creates a repository in your organization to contain infrastructure configuration codes and deployment pipeline definitions.
+> This step creates a repository in your organization which will contain infrastructure configuration codes and deployment pipeline definitions.
 
 ## Option 1: Create from AzDO UI
 ![import](./img/import.png)
@@ -23,6 +23,6 @@
 9. Run `git push -u origin init`
 10. Create pull request and merge `init` branch.
 
-## Next step
+## Next steps
 
 [Setup AzDO agents](./Setup-Agents.md)
