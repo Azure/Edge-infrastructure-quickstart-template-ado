@@ -1,6 +1,8 @@
 # Customize Stages
 
-Open `.pipelines/deploy-infra.yml`. The initial version is
+Open `.pipelines/deploy-infra.yml`. 
+
+The **initial version** is -
 
 ```yml
 stages:
@@ -47,12 +49,12 @@ stages:
         directory: prod
 ```
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
+## Learn more
 
-- About [adding your first site with static templates](./Add-The-First-Site.md)
-- About [troubleshooting](./TroubleShooting.md)
-- About [enabling arc extensions for all sites](../README.md#enable-opt-in-features-for-all-sites)
+[Adding your first site with static templates](./Add-The-First-Site.md)
+[Troubleshooting](./TroubleShooting.md)
+[Enabling arc extensions for all sites](../README.md#enable-opt-in-features-for-all-sites)
