@@ -2,9 +2,11 @@
 
 ## Find the groups you are a member of
 
-Go to [Microsoft Entra admin center](https://entra.microsoft.com/#home). Select Users -> All users. Search by your name.
+Step 1. Go to [Microsoft Entra admin center](https://entra.microsoft.com/#home). 
 
-Click Groups under Manage. The groups that you are a member of is listed. Choose one group as the admin group. Copy the `Object Id` to `variables.aks-arc.global.tf`. Uncomment the line to set default value.
+Step 2. Select Users -> All users. Search by your name.
+
+Step 3. Under ‘Manage’, click on Groups. You will see a list of groups you are a member of. Select one group to be the admin group. Copy the Object Id and paste it into variables.aks-arc.global.tf. Then, uncomment the line to set the default value.
 
 ```
 variable "rbac_admin_group_object_ids" {
@@ -15,10 +17,9 @@ variable "rbac_admin_group_object_ids" {
 }
 ```
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
-
-- About [troubleshooting](./TroubleShooting.md)
+## Learn more
+[Troubleshooting](./TroubleShooting.md)
