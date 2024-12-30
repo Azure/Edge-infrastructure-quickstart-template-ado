@@ -12,6 +12,6 @@ Go to `modules/base/variables.hci-extensions.global.tf`. Change the default valu
 
 [Go back to home page](../README.md)
 
-Learn more:
+## Learn more
 
-- About [troubleshooting](./TroubleShooting.md)
+[Troubleshooting](./TroubleShooting.md)
