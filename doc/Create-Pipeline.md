@@ -6,7 +6,13 @@
 4. Choose **Existing Azure Pipelines YAML file**. Select **.pipelines/deploy-infra.yml**
 5. Input the pipeline name and choose a folder. Choose **Save** in the options dropdown of **Save and run**
 
+## Other pipelines
+* **Drift Detection Pipeline**: This pipeline will be used to detect drifts in the infrastructure. Create a new pipeline and choose **.pipelines/drift.yml**. Please refer to [Drift Detection](./Drift-Detection.md) for more details.
+
 ## Next step
+
+You could explore additional features in the pipelines:
+* [Drift Detection](./Drift-Detection.md)
 
 Setup is Done!
 

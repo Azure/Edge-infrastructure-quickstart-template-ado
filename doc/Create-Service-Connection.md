@@ -27,12 +27,11 @@ The following permissions need to be added to the associated service principal:
 
 ## Set service connection name in the pipeline
 
-Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_service_connection_name>` to the service connection name you just created.
+Open `.pipelines/config-variables.yml`, change the following `<your_service_connection_name>` to the service connection name you just created.
 
 ```yml
   - name: azureConnectionName
-    type: string
-    default: <your_service_connection_name> # TODO: Change this to your service connection name
+    value: <your_service_connection_name> # TODO: Change this to your service connection name
 ```
 
 ## Next Step

@@ -212,10 +212,16 @@ Following tutorials help you to turn on opt-in features:
 
 - [Customize Stages](./doc/Customize-Stages.md)
 - [Update global parameters](./doc/Edit-Global-Parameters.md)
-- [Disable Telemetry](./doc/Disable-Telemetry.md)
+- [Drift Detection](./doc/Drift-Detection.md)
+- [Config Variables](./doc/Config-Variables.md)
 - [Untrack Resources from The Repository](./doc/Untrack-Resources.md)
 - [View your CI/CD pipeline running status](./doc/View-pipeline.md)
 - [TroubleShoot](./doc/TroubleShooting.md)
+
+## Upgrade your infrastructure repository
+> **Warning**: This project is under active development. New features and bug fixes are added continuously, which may introduce breaking changes. To use new features, merge the latest changes from this repo into your repository. Follow this guide to upgrade your repository:
+
+* [Upgrade your repository](./doc/Upgrade-Repo.md)
 
 ## Ask for support
 
