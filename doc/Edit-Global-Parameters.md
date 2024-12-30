@@ -20,12 +20,12 @@ Site level variables are defined in `modules/base/variables.<product>.site.tf`. 
 
 # Pass through variables and reference variables
 
-You don't need to care about these variables in most cases. They are defined in `<product>.misc.tf`. Pass through variables are used to make Terraform modules work. Reference variables are used by this product, but its definition is put in another product. You can find its definition there.
+In most cases, you don’t need to worry about these variables. They are defined in `<product>.misc.tf`. Pass-through variables are used to make Terraform modules function properly. Reference variables are utilized by this product, but their definitions are located in another product. You can find their definitions there.
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
+## Learn more
 
-- About [troubleshooting](./TroubleShooting.md)
+[Troubleshooting](./TroubleShooting.md)
