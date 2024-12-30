@@ -1,7 +1,7 @@
 
-# Enale Arc Site Manager to manage your resources with physical location
+# Enable Arc Site Manager to manage your resources with physical location
 
-Go to `dev/sample/main.tf` and uncomment "Region Site manager parameters". In Arc Site Manager, only country information is required, feel free to remove any other optional parameters you don't need.
+Go to `dev/sample/main.tf` and uncomment "Region Site manager parameters". In Arc Site Manager, only 'country' is required parameter, others are optional parameters which can be removed if not needed.
 
 ```
 
@@ -26,16 +26,15 @@ module "base" {
 
 ```
 
-Then, you can submit the change and deploy through GitHub actions. After the deployment is finished, you can go to [https://aka.ms/site](https://aka.ms/site) to view your site health status. All the other resources created under the same resource group will be available in the new site.
+Then, submit the change and deploy through GitHub actions. After the deployment is finished, go to [https://aka.ms/site](https://aka.ms/site) to view your site health status. All the other resources created under the same resource group will be available in the new site.
 
 > [!NOTE]
 > We only support enabling Arc Site Manager with resource group scope in this quick-start repository.
 
 
-## Next Step
+## Next Steps
 
 [Go back to home page](../README.md)
 
-Learn more:
-
-- About [troubleshooting](./TroubleShooting.md)
+## Learn more
+[Troubleshooting](./TroubleShooting.md)
