@@ -35,7 +35,7 @@ Open `.pipelines/templates/site-cd-steps.yml`, change the following `<your_servi
     default: <your_service_connection_name> # TODO: Change this to your service connection name
 ```
 
-## Next Step
+## Next Steps
 
 Search for `TODO` in the repo to ensure you have finished all the prerequisites.
 
