@@ -27,19 +27,19 @@ A detailed instruction can be found [here](https://learn.microsoft.com/en-us/azu
 
 ### PAT
 
-Click `Personal access tokens`.
+**1.** Click `Personal access tokens`.
 
 ![PAT](./img/pat.png)
 
-Click `Show all scopes`.
+**2.** Click `Show all scopes`.
 
 ![show all](./img/patShowAll.png)
 
-Select `Agent Pools -> Read & manage` and `Deployment Groups -> Read & manage`.
+**3.** Select `Agent Pools -> Read & manage` and `Deployment Groups -> Read & manage`.
 
 ![scopes](./img/patScopes.png)
 
-Click `Create`. Copy the value of PAT. Paste to the line `Enter personal access token`.
+**4.** Click `Create`. Copy the value of PAT. Paste to the line `Enter personal access token`.
 ![paste](./img/patPaste.png)
 
 ### Agent pool
@@ -80,6 +80,6 @@ Example
 pool: Default
 ```
 
-## Next step
+## Next steps
 
 [Add Terraform AzDO extension](./Add-Terraform-Extension.md)
